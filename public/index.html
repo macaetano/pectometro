@@ -1,10 +1,7 @@
 <!doctype html>
 <html ng-app>
   <head>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>-->
-    
-    <link rel="stylesheet" href="style.css">
-
+    <!--   jQuery    -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Compiled and minified CSS -->
@@ -17,8 +14,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--  Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carousel.css">
 
-    <script src="script.js"></script>
+    <!--  Custom Js  -->
+    <script src="js/script.js"></script>
+    <script src="js/proposicoes.js"></script>
+    <script src="js/carousel.js"></script>
   </head>
   <body>
     <nav>
@@ -57,17 +61,22 @@
       </div>
     </nav>
 
+    <div id="carousel-pecs" class="carousel-container">
+      <div class="carousel-slider">
+      </div>
+    </div>
+
     <ul class="sidenav" id="mobile-demo">
       <li><a href="sass.html">Temas</a></li>
       <li><a href="badges.html">Quem Somos</a></li>
     </ul>
     
-    <ul class="collection">
-      <li class="collection-item">PEC 121</li>
-      <li class="collection-item">PEC 122</li>
-      <li class="collection-item">PEC 123</li>
-      <li class="collection-item">PEC 124</li>
-    </ul>
+    <!-- <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">First</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    </ul> -->
 
   </body>
 </html>
