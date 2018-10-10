@@ -1,0 +1,120 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <!--   jQuery    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!--Let browser know website is optimized for mobile-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--  Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carousel.css">
+
+    <!--  Custom Js  -->
+    <script src="js/script.js"></script>
+    <script src="js/proposicoes.js"></script>
+    <script src="js/carousel.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper cyan darken-1">
+        <a href="index.html" class="brand-logo">PECtômetro</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="sass.html">Temas</a></li>
+          <li><a href="badges.html">Quem Somos</a></li>
+          <li style="margin-right: 20px">
+            <nav class="nav-pesquisa">
+              <div class="nav-wrapper">
+                <form>
+                  <div class="input-field cyan darken-1">
+                    <input id="search-pc" type="search" placeholder="Pesquisar PEC's" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                  </div>
+                </form>
+              </div>
+            </nav>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <nav class="nav-pesquisa mobile">
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field white">
+            <input id="search" type="search" onkeypress="myscript(event,this)" placeholder="Pesquisar PEC's" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+
+    <div style="padding: 0 20px">
+      <h1 id="numPec">PEC </h1>
+      <h5 id="ementa"></h5>
+    </div>
+
+    <div class="comentarios">
+      
+    </div>
+
+  </body>
+</html>
+<style>
+  .comentarios {
+    position: absolute;
+    border: 1px solid;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    bottom: 1%;
+    height: 40%;
+  }
+</style>
+<script>
+  var ementa = "";
+  var numero = localStorage.getItem('pec');
+  $.ajax({
+      "type": "GET",
+      "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=2018`,
+      "success": function(response) {
+          console.log(response);
+          document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / 2018';
+          document.getElementById('ementa').innerHTML += response.dados[0].ementa;
+      }
+  });
+
+  function busca() {
+    $.ajax({
+      "type": "GET",
+      "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${document.getElementById('search').value}&ano=2018`,
+      "success": function(response) {
+          console.log(response);
+          document.getElementById('numPec').innerHTML = 'PEC ' + document.getElementById('search').value + ' / 2018';
+          document.getElementById('ementa').innerHTML = response.dados[0].ementa;
+      }
+    });
+  }
+
+  function myscript(e,i){
+    localStorage.setItem(`pec`, document.getElementById('search').value);
+      if(e.key == `Enter`){
+        busca();
+      }
+  }
+</script>
