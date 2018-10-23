@@ -1,3 +1,5 @@
+/* ---------- TELA INICIAL ---------- */
+
 var imagens = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx-DzTP9qxIy-5w7PJvFJXZW2lTf-fjqRJQr9Wvap1zY8cqPvr',
     'https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg',
@@ -6,7 +8,9 @@ var imagens = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOrR7vmKvt5hRy_4KC5mi3sJnNi1WHqRQAqqpNF-MMMHJ3KUKH'
 ]
 
-getUltimasProposicoes(5, preencherUltimasPecs);
+/* Ao carregar index, fazer get em últimas requisições e então preencher o carousel */
+if (window.location.href.includes('index.html'))
+    getUltimasProposicoes(5, preencherUltimasPecs);
 
 function preencherUltimasPecs(pecs) {
     var div = $('#carousel-pecs')[0];
@@ -14,18 +18,13 @@ function preencherUltimasPecs(pecs) {
         var pec = pecs[i];
         div.innerHTML += `
         <div class="item ${i == 0 ? 'active' : ''}">
-            <img src="${imagens[i]}" onclick="exibirDadosPec(${pec.numero})" alt="PEC ${pec.numero} / ${pec.ano}" style="width:100%;">
+            <img src="${imagens[i]}" onclick="exibirDadosPec(${pec.id}, ${pec.numero})" alt="PEC ${pec.numero} / ${pec.ano}" style="width:100%;">
             <div class="carousel-caption">
             <h3>PEC ${pec.numero} / ${pec.ano}</h3>
             </div>
         </div>
         `;
     }
-}
-
-function exibirDadosPec(pecNum) {
-    localStorage.setItem(`pec`, pecNum);
-    window.location.href = './dadosPec.html';
 }
 
 function getUltimasProposicoes(quant, cb) {
@@ -39,18 +38,40 @@ function getUltimasProposicoes(quant, cb) {
     });
 }
 
-// function getIndexUltimaProposicao(cb, i=630) {
-//     $.ajax({
-//         "type": "GET",
-//         "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${i}`,
-//         "success": function(response) {
-//             if (response.dados.length == 0) {
-//                 cb(i - 1);
-//             } else {
-//                 getIndexUltimaProposicao(function(indice) {
-//                     cb(indice);
-//                 }, i+1);
-//             }
-//         }
-//     });
-//}
+/* ---------- VISUALIZAÇÃO DA PEC ---------- */
+
+function exibirDadosPec(pecId, pecNum) {
+    localStorage.setItem(`pecId`, pecId);
+    localStorage.setItem(`pecNum`, pecNum);
+    window.location.href = './dadosPec.html';
+}
+
+function getAutores(id) {
+    $.ajax({
+        "type": "GET",
+        "crossDomain": true,
+        "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes/${id}/autores`,
+        "success": function(response) {
+            var autores = response.dados;
+            document.getElementById("span-autor").innerHTML = autores.length > 1 ? "Autores: " : "Autor: ";
+            if (autores) {
+            autores.forEach(function(autor, index) {
+                if (index > 0) document.getElementById("autores").innerHTML += ", ";
+                document.getElementById("autores").innerHTML += autor.nome;
+            })
+            console.log(response);
+            }
+        }
+    });
+}
+
+function getTramitacoes(id) {
+    $.ajax({
+        "type": "GET",
+        "crossDomain": true,
+        "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes/${id}/tramitacoes`,
+        "success": function(response) {
+            console.log(response);
+        }
+    });
+}

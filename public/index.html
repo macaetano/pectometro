@@ -109,13 +109,6 @@
       <li><a href="sass.html">Temas</a></li>
       <li><a href="badges.html">Quem Somos</a></li>
     </ul>
-    
-    <!-- <ul class="collapsible">
-      <li>
-        <div class="collapsible-header">First</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-    </ul> -->
 
   </body>
 </html>
@@ -129,9 +122,9 @@
 </style>
 <script>  
   function myscript(e,i){
-    localStorage.setItem(`pec`, document.getElementById('search').value);
+    localStorage.setItem(`pecNum`, document.getElementById('search').value);
       if(e.key == `Enter`){
-        window.location.href = 'file:///home/matheus/Documents/TIS/public/dadosPec.html';
+        window.location.href = './dadosPec.html';
       } else console.log(e.key)
   }
 </script>

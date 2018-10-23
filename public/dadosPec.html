@@ -67,7 +67,8 @@
 
     <div style="padding: 0 20px">
       <h1 id="numPec">PEC </h1>
-      <h5 id="ementa"></h5>
+      <span id="span-autor" style="font-weight: bold">Autores: </span><span id="autores"></span><br/>
+      <span id="span-ementa" style="font-weight: bold">Ementa: </span><span id="ementa"></span>
     </div>
 
     <div class="comentarios">
@@ -88,12 +89,15 @@
 </style>
 <script>
   var ementa = "";
-  var numero = localStorage.getItem('pec');
+  var numero = localStorage.getItem('pecNum');
+  var id     = localStorage.getItem('pecId');
   $.ajax({
       "type": "GET",
       "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=2018`,
       "success": function(response) {
-          console.log(response);
+          id = response.dados[0].id;
+          getAutores(id);
+          getTramitacoes(id);
           document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / 2018';
           document.getElementById('ementa').innerHTML += response.dados[0].ementa;
       }
@@ -104,7 +108,6 @@
       "type": "GET",
       "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${document.getElementById('search').value}&ano=2018`,
       "success": function(response) {
-          console.log(response);
           document.getElementById('numPec').innerHTML = 'PEC ' + document.getElementById('search').value + ' / 2018';
           document.getElementById('ementa').innerHTML = response.dados[0].ementa;
       }
@@ -112,7 +115,7 @@
   }
 
   function myscript(e,i){
-    localStorage.setItem(`pec`, document.getElementById('search').value);
+    localStorage.setItem(`pecNum`, document.getElementById('search').value);
       if(e.key == `Enter`){
         busca();
       }
