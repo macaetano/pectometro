@@ -32,7 +32,7 @@
     <nav>
       <div class="nav-wrapper cyan darken-1">
         <a href="index.html" class="brand-logo">PECtômetro</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="index.html" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">keyboard_arrow_left</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="sass.html">Temas</a></li>
           <li><a href="badges.html">Quem Somos</a></li>
@@ -72,19 +72,37 @@
     </div>
 
     <div class="comentarios">
-      
+      <h3 class="titulo">Discussão:</h3>
+
+      <div class="comentario">
+        <div class="autor-comentario"><span class="nome">Lucas Silveira</span><br/><span class="email">lucas.macedo@sga.pucminas.br</span></div>
+        <div class="conteudo-comentario"><span>Achei bem ruim essa API. Na documentação não fala nada sobre ser obrigado a mandar o ano na requisição pra poder listar todas as PECs.</span></div>
+      </div>
+      <div class="comentario">
+        <div class="autor-comentario"><span class="nome">Lucas Silveira</span><br/><span class="email">lucas.macedo@sga.pucminas.br</span></div>
+        <div class="conteudo-comentario"><span>Achei bem ruim essa API. Na documentação não fala nada sobre ser obrigado a mandar o ano na requisição pra poder listar todas as PECs.</span></div>
+      </div>
     </div>
 
   </body>
 </html>
 <style>
   .comentarios {
-    position: absolute;
-    border: 1px solid;
-    width: calc(100% - 20px);
-    margin-left: 10px;
-    bottom: 1%;
-    height: 40%;
+    padding: 0 20px;
+  }
+
+  .comentario:not(:last-of-type) {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  .titulo {
+    font-weight: bold;
+  }
+
+  .autor-comentario {
+    font-weight: bold;
   }
 </style>
 <script>

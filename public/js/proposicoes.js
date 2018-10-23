@@ -20,7 +20,7 @@ function preencherUltimasPecs(pecs) {
         <div class="item ${i == 0 ? 'active' : ''}">
             <img src="${imagens[i]}" onclick="exibirDadosPec(${pec.id}, ${pec.numero})" alt="PEC ${pec.numero} / ${pec.ano}" style="width:100%;">
             <div class="carousel-caption">
-            <h3>PEC ${pec.numero} / ${pec.ano}</h3>
+                <h3>PEC ${pec.numero} / ${pec.ano}</h3>
             </div>
         </div>
         `;
