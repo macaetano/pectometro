@@ -71,17 +71,8 @@
       <span id="span-ementa" style="font-weight: bold">Ementa: </span><span id="ementa"></span>
     </div>
 
-    <div class="comentarios">
+    <div id="comentarios" class="comentarios">
       <h3 class="titulo">Discussão:</h3>
-
-      <div class="comentario">
-        <div class="autor-comentario"><span class="nome">Lucas Silveira</span><br/><span class="email">lucas.macedo@sga.pucminas.br</span></div>
-        <div class="conteudo-comentario"><span>Achei bem ruim essa API. Na documentação não fala nada sobre ser obrigado a mandar o ano na requisição pra poder listar todas as PECs.</span></div>
-      </div>
-      <div class="comentario">
-        <div class="autor-comentario"><span class="nome">Lucas Silveira</span><br/><span class="email">lucas.macedo@sga.pucminas.br</span></div>
-        <div class="conteudo-comentario"><span>Achei bem ruim essa API. Na documentação não fala nada sobre ser obrigado a mandar o ano na requisição pra poder listar todas as PECs.</span></div>
-      </div>
     </div>
 
   </body>
@@ -116,6 +107,23 @@
           id = response.dados[0].id;
           getAutores(id);
           getTramitacoes(id);
+          var comentarios = [
+            {
+              "autor": {
+                "nome": "Lucas Silveira Macedo",
+                "email": "lucas.macedo@sga.pucminas.br"
+              },
+              "conteudo": "Achei bem ruim essa API. Na documentação não fala nada sobre ser obrigado a mandar o ano na requisição pra poder listar todas as PECs."
+            },
+            {
+              "autor": {
+                "nome": "Matheus de Assis Caetano",
+                "email": "macaetano@gmail.com"
+              },
+              "conteudo": "Sei lá, só queria mesmo testar o Css com mais de um comentário."
+            }
+          ];
+          preencherComentarios(comentarios);
           document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / 2018';
           document.getElementById('ementa').innerHTML += response.dados[0].ementa;
       }

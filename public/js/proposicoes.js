@@ -58,8 +58,7 @@ function getAutores(id) {
             autores.forEach(function(autor, index) {
                 if (index > 0) document.getElementById("autores").innerHTML += ", ";
                 document.getElementById("autores").innerHTML += autor.nome;
-            })
-            console.log(response);
+            });
             }
         }
     });
@@ -73,5 +72,14 @@ function getTramitacoes(id) {
         "success": function(response) {
             console.log(response);
         }
+    });
+}
+
+function preencherComentarios(comentarios) {
+    comentarios.forEach(function(comentario) {
+        $("#comentarios")[0].innerHTML += `<div class="comentario">
+            <div class="autor-comentario"><span class="nome">${comentario.autor.nome}</span><br/><span class="email">${comentario.autor.email}</span></div>
+            <div class="conteudo-comentario"><span>${comentario.conteudo}</span></div>
+        </div>`
     });
 }
