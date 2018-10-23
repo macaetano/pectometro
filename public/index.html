@@ -75,36 +75,7 @@
   
       <!-- Wrapper for slides -->
       <div id="carousel-pecs" class="carousel-inner">
-        <div class="item active">
-          <img src="https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg" onclick="exibirDadosPec(400)" alt="PEC 400 / 2018" style="width:100%;">
-          <div class="carousel-caption">
-            <h3>PEC 400 / 2018</h3>
-          </div>
-        </div>
-        <div class="item">
-          <img src="https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg" alt="PEC 401 / 2018" onclick="exibirDadosPec(401)" style="width:100%;">
-          <div class="carousel-caption">
-            <h3>PEC 401 / 2018</h3>
-          </div>
-        </div>
-        <div class="item">
-          <img src="https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg" alt="PEC 402 / 2018" onclick="exibirDadosPec(402)" style="width:100%;">
-          <div class="carousel-caption">
-            <h3>PEC 402 / 2018</h3>
-          </div>
-        </div>
-        <div class="item">
-          <img src="https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg" alt="PEC 403 / 2018" onclick="exibirDadosPec(403)" style="width:100%;">
-          <div class="carousel-caption">
-            <h3>PEC 403 / 2018</h3>
-          </div>
-        </div>
-        <div class="item">
-          <img src="https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg" alt="PEC 404 / 2018" onclick="exibirDadosPec(404)" style="width:100%;">
-          <div class="carousel-caption">
-            <h3>PEC 404 / 2018</h3>
-          </div>
-        </div>
+        
       </div>
   
       <!-- Left and right controls -->
@@ -148,6 +119,14 @@
 
   </body>
 </html>
+<style>
+.item {
+  height: 200px;
+}
+#carousel-pecs img {
+  min-height: 100%;
+}
+</style>
 <script>  
   function myscript(e,i){
     localStorage.setItem(`pec`, document.getElementById('search').value);
@@ -155,10 +134,4 @@
         window.location.href = 'file:///home/matheus/Documents/TIS/public/dadosPec.html';
       } else console.log(e.key)
   }
-function busca() {
-}
-function exibirDadosPec(pecNum) {
-    localStorage.setItem(`pec`, pecNum);
-    window.location.href = 'file:///home/matheus/Documents/TIS/public/dadosPec.html';
-}
 </script>
