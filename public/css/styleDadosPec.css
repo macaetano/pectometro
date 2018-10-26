@@ -1,0 +1,20 @@
+#place-fodase{
+    color: black !important;
+  }
+  .comentarios {
+    padding: 0 20px;
+  }
+
+  .comentario:not(:last-of-type) {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  .titulo {
+    font-weight: bold;
+  }
+
+  .autor-comentario {
+    font-weight: bold;
+  }

@@ -17,13 +17,11 @@
     
     <!--  Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/styleDadosPec.css">
 
     <!--  Custom Js  -->
     <script src="js/script.js"></script>
-    <script src="js/proposicoes.js"></script>
-    <script src="js/carousel.js"></script>
-
+    <script src="js/dadosPec.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -79,11 +77,16 @@
                     <div id="comentarios" class="comentarios"></div>
                 </div>
             </div>
-            <input type="text" name="fname"  placeholder="Escreva seu comentário"><br>
-            <button class="btn waves-effect waves-light" style="width:100%" type="submit" name="action">Enviar
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">border_color</i>
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Escreva seu comentário</label>
+               </div>
+               <button class="btn waves-effect waves-light" style="width:100%" type="submit" name="action">Enviar
                   <i class="material-icons right">send</i>
             </button>
-                
+            </div>
           </div>
       </div>
           
@@ -91,73 +94,3 @@
 
   </body>
 </html>
-<style>
-  .comentarios {
-    padding: 0 20px;
-  }
-
-  .comentario:not(:last-of-type) {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid black;
-  }
-
-  .titulo {
-    font-weight: bold;
-  }
-
-  .autor-comentario {
-    font-weight: bold;
-  }
-</style>
-<script>
-  var ementa = "";
-  var numero = localStorage.getItem('pecNum');
-  var id     = localStorage.getItem('pecId');
-  $.ajax({
-      "type": "GET",
-      "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=2018`,
-      "success": function(response) {
-          id = response.dados[0].id;
-          getAutores(id);
-          getTramitacoes(id);
-          var comentarios = [
-            {
-              "autor": {
-                "nome": "Lucas Silveira Macedo",
-                "email": "lucas.macedo@sga.pucminas.br"
-              },
-              "conteudo": "Achei bem ruim essa API. Na documentação não fala nada sobre ser obrigado a mandar o ano na requisição pra poder listar todas as PECs."
-            },
-            {
-              "autor": {
-                "nome": "Matheus de Assis Caetano",
-                "email": "macaetano@gmail.com"
-              },
-              "conteudo": "Sei lá, só queria mesmo testar o Css com mais de um comentário."
-            }
-          ];
-          preencherComentarios(comentarios);
-          document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / 2018';
-          document.getElementById('ementa').innerHTML += response.dados[0].ementa;
-      }
-  });
-
-  function busca() {
-    $.ajax({
-      "type": "GET",
-      "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${document.getElementById('search').value}&ano=2018`,
-      "success": function(response) {
-          document.getElementById('numPec').innerHTML = 'PEC ' + document.getElementById('search').value + ' / 2018';
-          document.getElementById('ementa').innerHTML = response.dados[0].ementa;
-      }
-    });
-  }
-
-  function myscript(e,i){
-    localStorage.setItem(`pecNum`, document.getElementById('search').value);
-      if(e.key == `Enter`){
-        busca();
-      }
-  }
-</script>

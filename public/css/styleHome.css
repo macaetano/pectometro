@@ -1,0 +1,10 @@
+.item {
+    height: 200px;
+  }
+  #carousel-pecs img {
+    min-height: 100%;
+  }
+
+  .carousel {
+    height: auto;
+  }

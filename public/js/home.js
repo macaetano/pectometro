@@ -1,6 +1,11 @@
-/* ---------- TELA INICIAL ---------- */
+function myscript(e,i){
+    localStorage.setItem(`pecNum`, document.getElementById('search').value);
+      if(e.key == `Enter`){
+        window.location.href = './dadosPec.html';
+      } else console.log(e.key)
+  }
 
-var imagens = [
+  var imagens = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx-DzTP9qxIy-5w7PJvFJXZW2lTf-fjqRJQr9Wvap1zY8cqPvr',
     'https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-hVsfMp7KM_lG4PTGYcj_VE316qrGVkBPiizKLiYQ5pH39ltJ',
@@ -35,51 +40,5 @@ function getUltimasProposicoes(quant, cb) {
         "success": function(response) {
             cb(response.dados);
         }
-    });
-}
-
-/* ---------- VISUALIZAÇÃO DA PEC ---------- */
-
-function exibirDadosPec(pecId, pecNum) {
-    localStorage.setItem(`pecId`, pecId);
-    localStorage.setItem(`pecNum`, pecNum);
-    window.location.href = './dadosPec.html';
-}
-
-function getAutores(id) {
-    $.ajax({
-        "type": "GET",
-        "crossDomain": true,
-        "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes/${id}/autores`,
-        "success": function(response) {
-            var autores = response.dados;
-            document.getElementById("span-autor").innerHTML = autores.length > 1 ? "Autores: " : "Autor: ";
-            if (autores) {
-            autores.forEach(function(autor, index) {
-                if (index > 0) document.getElementById("autores").innerHTML += ", ";
-                document.getElementById("autores").innerHTML += autor.nome;
-            });
-            }
-        }
-    });
-}
-
-function getTramitacoes(id) {
-    $.ajax({
-        "type": "GET",
-        "crossDomain": true,
-        "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes/${id}/tramitacoes`,
-        "success": function(response) {
-            console.log(response);
-        }
-    });
-}
-
-function preencherComentarios(comentarios) {
-    comentarios.forEach(function(comentario) {
-        $("#comentarios")[0].innerHTML += `<div class="comentario">
-            <div class="autor-comentario"><span class="nome">${comentario.autor.nome}</span><br/><span class="email">${comentario.autor.email}</span></div>
-            <div class="conteudo-comentario"><span>${comentario.conteudo}</span></div>
-        </div>`
     });
 }
