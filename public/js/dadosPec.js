@@ -88,6 +88,7 @@ function preencherComentarios(comentarios) {
         $("#comentarios")[0].innerHTML += `
         <div class="comentario">
             <div class="autor-comentario">
+                <i class=" material-icons prefix">account_circle</i>
                 <span class="nome">${comentario.autor.nome}</span>
                 <br/><span class="email">${comentario.autor.email}</span>
             </div>
