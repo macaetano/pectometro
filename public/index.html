@@ -42,7 +42,7 @@
                   <div class="input-field cyan darken-1">
                     <input id="search-pc" type="search" placeholder="Pesquisar PEC's" required>
                     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
+                    <i class="material-icons">close</i>sdasd
                   </div>
                 </form>
               </div>
@@ -51,7 +51,6 @@
         </ul>
       </div>
     </nav>
-
     <nav class="nav-pesquisa mobile">
       <div class="nav-wrapper">
         <div class="input-field white">
@@ -61,6 +60,7 @@
         </div>
       </div>
     </nav>
+    <div id="aloalo">
     <h3 class="titulo" style="text-align: center">Últimas PEC's</h3>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
@@ -86,10 +86,8 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
         <span class="sr-only">Next</span>
       </a>
-    </div>
   </div>
-
-  <h1 style="margin: auto; margin: 10px auto; width: auto;" class="center">Tarifometro</h1>
+  <h1 style="margin: auto; margin: 30px 30px 0px 30px; width: auto;" class="center">Tarifômetro</h1>
   <div style="width: 100%; display: flex; padding-bottom: 20px;">
     <ul class="pagination" style="margin: auto; margin: 10px auto; width: auto;">
       <li class="active"><a href="#!">1</a></li>
@@ -103,25 +101,36 @@
     </ul>
   </div>
 
+  
+  </div>
+  </div>
   <div class="card">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="img/pec.png">
     </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-    </div>
+    <div class="card-content"></div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">
           <div class="card-image">
             <i class="material-icons right">close</i></span>  
             <img src="img/infoPec.jpg">
           </div>
-    </div>
-  </div>
-    <ul class="sidenav" id="mobile-demo">
+    </div>  
+  <ul class="sidenav" id="mobile-demo">
       <li><a href="sass.html">Temas</a></li>
       <li><a href="badges.html">Quem Somos</a></li>
     </ul>
 
   </body>
 </html>
+<script>
+  $('.activator').click(function() {
+    $('#aloalo').hide();
+    $('.card-content').addClass('fullHeight');
+  });
+
+  $('.material-icons.right').click(function() {
+    $('#aloalo').show();
+    $('.card-content').removeClass('fullHeight');
+  })
+</script>
