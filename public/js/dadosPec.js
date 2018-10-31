@@ -8,23 +8,7 @@ $.ajax({
         id = response.dados[0].id;
         getAutores(id);
         getTramitacoes(id);
-        var comentarios = [
-          {
-            "autor": {
-              "nome": "Lucas Silveira Macedo",
-              "email": "lucas.macedo@sga.pucminas.br"
-            },
-            "conteudo": "Achei bem ruim essa API. Na documentação não fala nada sobre ser obrigado a mandar o ano na requisição pra poder listar todas as PECs."
-          },
-          {
-            "autor": {
-              "nome": "Matheus de Assis Caetano",
-              "email": "macaetano@gmail.com"
-            },
-            "conteudo": "Sei lá, só queria mesmo testar o Css com mais de um comentário."
-          }
-        ];
-        preencherComentarios(comentarios);
+        getMessages()
         document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / 2018';
         document.getElementById('ementa').innerHTML += response.dados[0].ementa;
     }
@@ -88,10 +72,10 @@ function preencherComentarios(comentarios) {
         $("#comentarios")[0].innerHTML += `
         <div class="comentario">
             <div class="autor-comentario">
-                <span class="nome">${comentario.autor.nome}</span>
-                <br/><span class="email">${comentario.autor.email}</span>
+                <span class="nome">${comentario.username}</span>
+                <br/><span class="email">${comentario.userEmail}</span>
             </div>
-            <div class="conteudo-comentario"><span>${comentario.conteudo}</span></div>
+            <div class="conteudo-comentario"><span>${comentario.text}</span></div>
         </div>`
     });
 }

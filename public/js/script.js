@@ -50,3 +50,44 @@ class carousel {
   // }
 
 }
+
+function enviarPEC() {
+  console.log(numero)
+  $.ajax({
+    type: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    },
+    url: 'http://localhost:8080/message',
+    data: {
+      email: 'teste@gmail.com',
+      text: document.getElementById('textarea1').value,
+      pec: numero ,
+      username: 'teste',
+      userEmail: 'teste@gmail.com',
+    },
+    "success": function(response){
+      getMessages()
+      clearComentarios()
+      alert('Mensagem enviada com sucesso')
+      console.log(response)
+    }
+  })
+}
+
+function clearComentarios() {
+  $("#comentarios")[0].innerHTML = `<div class="comentario">
+          <div class="autor-comentario"><span class="nome"></span><br/><span class="email"></span></div>
+          <div class="conteudo-comentario"><span></span></div>
+      </div>`
+}
+
+function getMessages () {
+  $.ajax({
+    method:'get',
+    url: 'http://localhost:8080/messages/' + numero,
+    success: function(response) {
+      console.log(response)
+      preencherComentarios(response.messages)
+    }
+})}
