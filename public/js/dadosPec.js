@@ -1,15 +1,16 @@
 var ementa = "";
 var numero = localStorage.getItem('pecNum');
+var ano    = localStorage.getItem('pecAno');
 var id     = localStorage.getItem('pecId');
 $.ajax({
     "type": "GET",
-    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=2018`,
+    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=${ano ? ano : 2018}`,
     "success": function(response) {
         id = response.dados[0].id;
         getAutores(id);
         getTramitacoes(id);
         getMessages()
-        document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / 2018';
+        document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / ' + (ano ? ano : 2018);
         document.getElementById('ementa').innerHTML += response.dados[0].ementa;
     }
 });
@@ -17,26 +18,26 @@ $.ajax({
 function busca() {
   $.ajax({
     "type": "GET",
-    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${document.getElementById('search').value}&ano=2018`,
+    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${document.getElementById('search').value}&ano=${ano ? ano : 2018}`,
     "success": function(response) {
-        document.getElementById('numPec').innerHTML = 'PEC ' + document.getElementById('search').value + ' / 2018';
+        document.getElementById('numPec').innerHTML = 'PEC ' + document.getElementById('search').value + ' / ' + (ano ? ano : 2018);
         document.getElementById('ementa').innerHTML = response.dados[0].ementa;
     }
   });
 }
 
-function myscript(e,i){
-  localStorage.setItem(`pecNum`, document.getElementById('search').value);
+function keypress(e,i){
     if(e.key == `Enter`){
-      busca();
+        openPec();
     }
 }
 
-function exibirDadosPec(pecId, pecNum) {
-    localStorage.setItem(`pecId`, pecId);
-    localStorage.setItem(`pecNum`, pecNum);
+  function openPec() {
+      localStorage.setItem(`pecNum`, document.getElementById('search').value);
+    localStorage.setItem(`pecAno`, document.getElementById('ano').value);
     window.location.href = './dadosPec.html';
-}
+    
+  }
 
 function getAutores(id) {
     $.ajax({

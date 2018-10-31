@@ -1,8 +1,14 @@
-function myscript(e,i){
-    localStorage.setItem(`pecNum`, document.getElementById('search').value);
-      if(e.key == `Enter`){
-        window.location.href = './dadosPec.html';
-      } else console.log(e.key)
+function keypress(e,i){
+    if(e.key == `Enter`){
+        openPec();
+    }
+}
+
+  function openPec() {
+      localStorage.setItem(`pecNum`, document.getElementById('search').value);
+    localStorage.setItem(`pecAno`, document.getElementById('ano').value);
+    window.location.href = './dadosPec.html';
+    
   }
 
   var imagens = [
@@ -41,4 +47,10 @@ function getUltimasProposicoes(quant, cb) {
             cb(response.dados);
         }
     });
+}
+
+function exibirDadosPec(pecId, pecNum) {
+    localStorage.setItem(`pecId`, pecId);
+    localStorage.setItem(`pecNum`, pecNum);
+    window.location.href = './dadosPec.html';
 }

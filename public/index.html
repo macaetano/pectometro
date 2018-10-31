@@ -22,7 +22,6 @@
     <!--  Custom Js  -->
     <script src="js/script.js"></script>
     <script src="js/home.js"></script>
-    <script src="js/dadosPec.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -54,10 +53,16 @@
     <nav class="nav-pesquisa mobile">
       <div class="nav-wrapper">
         <div class="input-field white">
-          <input id="search" type="search" onkeypress="myscript(event,this)" placeholder="Pesquisar PEC's" required>
+          <input id="search" type="search" onkeypress="keypress(event,this)" placeholder="Buscar PEC" required onclick="$('nav.mobile').addClass('expanded')">
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
+          <i class="material-icons" onclick="$('nav.mobile').removeClass('expanded')">close</i>
         </div>
+      </div>
+      <div class="filtro-wrapper">
+          <div class="input-field">
+            <input id="ano" type="number" placeholder="Ano (Opcional)" style="padding-left: 1rem;" onkeypress="keypress(event,this)">
+          </div>
+          <a class="waves-effect waves-light btn" style="color: white !important; float: right;" onclick="openPec()">Buscar</a>
       </div>
     </nav>
     <div id="aloalo">
@@ -90,14 +95,14 @@
   <h1 style="margin: auto; margin: 30px 30px 0px 30px; width: auto;" class="center">Tarifômetro</h1>
   <div style="width: 100%; display: flex; padding-bottom: 20px;">
     <ul class="pagination" style="margin: auto; margin: 10px auto; width: auto;">
-      <li class="active"><a href="#!">1</a></li>
-      <li class="waves-effect"><a href="#!">0</a></li>
-      <li class="waves-effect"><a href="#!">0</a></li>
-      <li class="waves-effect"><a href="#!">0</a></li>
-      <li class="waves-effect"><a href="#!">0</a></li>
-      <li class="waves-effect"><a href="#!">0</a></li>
-      <li class="waves-effect"><a href="#!">0</a></li>
-      <li class="waves-effect"><a href="#!">0</a></li>
+      <li class=""><a href="#!">2</a></li>
+      <li class=""><a href="#!">1</a></li>
+      <li class=""><a href="#!">0</a></li>
+      <li class=""><a href="#!">9</a></li>
+      <li class=""><a href="#!">1</a></li>
+      <li class=""><a href="#!">2</a></li>
+      <li class=""><a href="#!">6</a></li>
+      <li class=""><a href="#!">2</a></li>
     </ul>
   </div>
 

@@ -29,16 +29,35 @@ input::-webkit-input-placeholder {
 
 @media only screen and (max-device-width: 600px) {
     .nav-pesquisa.mobile {
-        display: block;;
+        display: block;
+        background-color: white !important;
+        transition: .5s;
     }
-
+    
     .nav-pesquisa.mobile * {
-        color: darkslategray !important
+        color: darkslategray !important;
+        transition: .5s;
     }
 
     .nav-pesquisa.mobile input::-webkit-input-placeholder {
         color: black !important;
         opacity: .8 !important;
+    }
+
+    .nav-pesquisa.mobile.expanded {
+        height: 140px !important;
+    }
+
+    .filtro-wrapper {
+        display: none;
+    }
+
+    .expanded .filtro-wrapper {
+        display: block;
+    }
+    
+    .nav-wrapper {
+        height: 60px !important;
     }
 }
 
