@@ -45,14 +45,13 @@ class carousel {
   //         </div>
 
   //     `;
-  //     b = true;
+  //     b = true;s
   //     imgs.splice(0,1);
   // }
 
 }
 
 function enviarPEC() {
-  console.log(numero)
   $.ajax({
     type: 'POST',
     headers: {
@@ -60,11 +59,10 @@ function enviarPEC() {
     },
     url: 'http://localhost:8080/message',
     data: {
-      email: 'teste@gmail.com',
-      text: document.getElementById('textarea1').value,
+      text: document.getElementById('comentario').value,
       pec: numero ,
-      username: 'teste',
-      userEmail: 'teste@gmail.com',
+      username: document.getElementById('nomeTexto').value,
+      userEmail: document.getElementById('emailTexto').value,
     },
     "success": function(response){
       getMessages()
