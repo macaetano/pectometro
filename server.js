@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const app = require("express")();
 app.use(require("body-parser").urlencoded({ extended: false }));
-app.listen(8080, () => console.log("Listening"));
+app.listen(process.env.PORT || 5000, () => console.log("Listening"));
 mongoose.connect(
   "mongodb://pectometro:pectometro17@ds259912.mlab.com:59912/pectometro",
   err => console.log(err)
