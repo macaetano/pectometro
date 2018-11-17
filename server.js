@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
-const app = require("express")();
+const express = require('express')
+const app = express();
+const path = require('path')
 app.use(require("body-parser").urlencoded({ extended: false }));
-app.listen(process.env.PORT || 5000, () => console.log("Listening"));
+app.listen(process.env.PORT || 8080, () => console.log("Listening"));
 mongoose.connect(
   "mongodb://pectometro:pectometro17@ds259912.mlab.com:59912/pectometro",
   err => console.log(err)
@@ -24,6 +26,8 @@ app.get("/messages/:pec", (req, res) => {
   );
 });
 
+app.use(express.static(path.join(__dirname, '/public')));
+
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/public/index.html'));
+  res.sendFile(path.join(__dirname + '/public'));
 });
