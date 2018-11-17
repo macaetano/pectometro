@@ -76,7 +76,9 @@ function preencherComentarios(comentarios) {
                 <span class="nome">${comentario.username}</span>
                 <br/><span class="email">${comentario.userEmail}</span>
             </div>
-            <div class="conteudo-comentario"><span>${comentario.text}</span></div>
+            <div class="conteudo-comentario" style='
+                word-break: break-all;
+              '><p>${comentario.text}</p></div>
         </div>`
     });
 }
