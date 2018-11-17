@@ -57,7 +57,7 @@ function enviarPEC() {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     },
-    url: 'http://localhost:8080/message',
+    url: 'http://pectometro.herokuapp.com/message',
     data: {
       text: document.getElementById('comentario').value,
       pec: numero ,
@@ -83,7 +83,7 @@ function clearComentarios() {
 function getMessages () {
   $.ajax({
     method:'get',
-    url: 'http://localhost:8080/messages/' + numero,
+    url: 'http://pectometro.herokuapp.com/messages/' + numero,
     success: function(response) {
       console.log(response)
       preencherComentarios(response.messages)
