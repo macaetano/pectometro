@@ -34,7 +34,7 @@ function keypress(e,i){
 
   function openPec() {
       localStorage.setItem(`pecNum`, document.getElementById('search').value);
-    localStorage.setItem(`pecAno`, document.getElementById('ano').value);
+    //localStorage.setItem(`pecAno`, document.getElementById('ano').value);
     window.location.href = './dadosPec.html';
     
   }
