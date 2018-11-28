@@ -1,10 +1,13 @@
 var ementa = "";
 var numero = localStorage.getItem('pecNum');
-var ano    = localStorage.getItem('pecAno');
+var ano    = localStorage.getItem('ano');
 var id     = localStorage.getItem('pecId');
+
+console.log(id)
+
 $.ajax({
     "type": "GET",
-    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=${ano ? ano : 2018}`,
+    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes/${id}`,
     "success": function(response) {
         id = response.dados[0].id;
         getAutores(id);

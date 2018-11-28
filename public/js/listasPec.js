@@ -1,10 +1,12 @@
 var ementa = "";
 var numero = localStorage.getItem('pecNum');
-var ano    = localStorage.getItem('pecAno');
+var ano    = localStorage.getItem('ano');
+var politico    = localStorage.getItem('politico');
+
 var id     = localStorage.getItem('pecId');
 $.ajax({
     "type": "GET",
-    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=${ano ? ano : 2018}`,
+    "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=${ano ? ano : ''}&autor=${politico}`,
     "success": function(response) {
         response.dados.forEach(element => {
             preencherPecs(element);
@@ -27,16 +29,18 @@ function preencherPecs(pec){
                 <a>Autor(es): <span id="autores-${pec.id}"></span><a>
                 <a href="#" class="secondary-content"><i onclick='setDados(${JSON.stringify(pec)})' class="material-icons">send</i>
                 </a>
-            </div></li>
+            </div>
+        </li>
     `
 
 }
 
 function setDados(pec){
-    localStorage.setItem('pecNum', pec.numero);
-    localStorage.setItem('pecAno', pec.ano);
-    localStorage.getItem('pecId', pec.id);
-    window.location.href = './dadosPec.html';
+    console.log(pec.id);
+    // localStorage.setItem('pecNum', pec.numero);
+    // localStorage.setItem('pecAno', pec.ano);
+    // localStorage.getItem('pecId', pec.id);
+    // window.location.href = './dadosPec.html';
 }
 function getAutores(id) {
     $.ajax({

@@ -1,15 +1,18 @@
-function keypress(e,i){
-    if(e.key == `Enter`){
-        openPec();
+function keypress(e, i, type = 'pecNum') {
+    if (e.key == `Enter`) {
+      openPec(type);
     }
-}
-
-  function openPec() {
-      localStorage.setItem(`pecNum`, document.getElementById('search').value);
-    //localStorage.setItem(`pecAno`, document.getElementById('ano').value);
-    window.location.href = './listasPec.html';
-    
   }
+  
+  function openPec(type) {
+    localStorage.setItem('pecNum', document.getElementById("search").value);
+    localStorage.setItem('ano', document.getElementById("ano").value);
+    localStorage.setItem('politico', document.getElementById("politico").value);
+
+    //localStorage.setItem(`pecAno`, document.getElementById('ano').value);
+    window.location.href = "./listasPec.html";
+  }
+  
 
   var imagens = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx-DzTP9qxIy-5w7PJvFJXZW2lTf-fjqRJQr9Wvap1zY8cqPvr',
