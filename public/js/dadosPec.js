@@ -9,12 +9,12 @@ $.ajax({
     "type": "GET",
     "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes/${id}`,
     "success": function(response) {
-        id = response.dados[0].id;
+        id = response.dados.id;
         getAutores(id);
         getTramitacoes(id);
         getMessages()
-        document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / ' + (ano ? ano : 2018);
-        document.getElementById('ementa').innerHTML += response.dados[0].ementa;
+        document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / ' + (response.dados.ano ? response.dados.ano : 2018);
+        document.getElementById('ementa').innerHTML += response.dados.ementa;
     }
 });
 
@@ -38,7 +38,7 @@ function keypress(e,i){
   function openPec() {
       localStorage.setItem(`pecNum`, document.getElementById('search').value);
     //localStorage.setItem(`pecAno`, document.getElementById('ano').value);
-    window.location.href = './dadosPec.html';
+    window.location.href = './listasPec.html';
     
   }
 

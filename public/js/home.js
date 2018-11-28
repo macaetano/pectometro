@@ -1,20 +1,20 @@
 function keypress(e, i, type = 'pecNum') {
     if (e.key == `Enter`) {
-      openPec(type);
+        openPec(type);
     }
-  }
-  
-  function openPec(type) {
+}
+
+function openPec(type='pecNum') {
     localStorage.setItem('pecNum', document.getElementById("search").value);
     localStorage.setItem('ano', document.getElementById("ano").value);
     localStorage.setItem('politico', document.getElementById("politico").value);
 
     //localStorage.setItem(`pecAno`, document.getElementById('ano').value);
     window.location.href = "./listasPec.html";
-  }
+}
   
 
-  var imagens = [
+var imagens = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx-DzTP9qxIy-5w7PJvFJXZW2lTf-fjqRJQr9Wvap1zY8cqPvr',
     'https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-hVsfMp7KM_lG4PTGYcj_VE316qrGVkBPiizKLiYQ5pH39ltJ',
@@ -23,8 +23,12 @@ function keypress(e, i, type = 'pecNum') {
 ]
 
 /* Ao carregar index, fazer get em últimas requisições e então preencher o carousel */
-if (window.location.href.includes('index.html'))
+var href = window.location.href.split('/');
+var page = href[href.length-1];
+
+if (page.includes('index.html') || !page.includes('dadosPec') | page.includes('listasPec'))
     getUltimasProposicoes(5, preencherUltimasPecs);
+else console.log(page);
 
 function preencherUltimasPecs(pecs) {
     var div = $('#carousel-pecs')[0];

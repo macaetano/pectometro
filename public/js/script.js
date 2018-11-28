@@ -18,35 +18,6 @@ let imgs = [
   `https://www.estadosecapitaisdobrasil.com/wp-content/uploads/2014/09/eixo-monumental-brasilia-distrito-federal.jpg`
 ];
 
-class carousel {
-  // static preencherUltimasProposicoes(pecs) {
-  //     let div = $('#carousel-pecs > .carousel-slider')[0];
-  //     pecs.dados.forEach(function(pec) {
-  //         div.innerHTML +=
-  //         `
-  //             <div class="carousel-slide">
-  //                 <h1>PEC ${pec.numero} / ${pec.ano}</h1>
-  //             </div>
-  //         `;
-  //     });
-  // }
-  // static addProposicao(pec) {
-  //     let div = $('#carousel-pecs')[0];
-  //     div.innerHTML +=
-  //     `
-  //         <div class="item ${!b ? 'active' : ''}">
-  //             <img src="${imgs[0]}" alt="${pec.numero} / ${pec.ano}" style="width:100%;">
-  //             <div class="carousel-caption">
-  //             <h3>${pec.numero} / ${pec.ano}</h3>
-  //             <p>LA is always so much fun!</p>
-  //             </div>
-  //         </div>
-  //     `;
-  //     b = true;s
-  //     imgs.splice(0,1);
-  // }
-}
-
 function enviarPEC() {
   $.ajax({
     type: "POST",
@@ -90,6 +61,15 @@ function getMessages() {
 function showFiltros() {
   $("#aloalo").hide();
   $("#filter").show();
+  $('.card').hide();
   $("#filter").addClass("fullHeight");
   $(".card-content").hide();
+}
+
+function hideFiltros() {
+  $("#aloalo").show();
+  $("#filter").hide();
+  $('.card').show();
+  $("#filter").removeClass("fullHeight");
+  $(".card-content").show();
 }

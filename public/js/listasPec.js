@@ -4,6 +4,7 @@ var ano    = localStorage.getItem('ano');
 var politico    = localStorage.getItem('politico');
 
 var id     = localStorage.getItem('pecId');
+
 $.ajax({
     "type": "GET",
     "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&numero=${numero}&ano=${ano ? ano : ''}&autor=${politico}`,
@@ -12,14 +13,29 @@ $.ajax({
             preencherPecs(element);
             getAutores(element.id);
         });
-        // id = response.dados[0].id;
-        // getAutores(id);
-        // getTramitacoes(id);
-        // getMessages()
-        // document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / ' + (ano ? ano : 2018);
-        // document.getElementById('ementa').innerHTML += response.dados[0].ementa;
+        id = response.dados[0].id;
+        getAutores(id);
+        getTramitacoes(id);
+        getMessages()
+        document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / ' + (ano ? ano : 2018);
+        document.getElementById('ementa').innerHTML += response.dados[0].ementa;
     }
 });
+
+function keypress(e, i, type = 'pecNum') {
+    if (e.key == `Enter`) {
+        openPec(type);
+    }
+}
+
+function openPec(type='pecNum') {
+    localStorage.setItem('pecNum', document.getElementById("search").value);
+    localStorage.setItem('ano', document.getElementById("ano").value);
+    localStorage.setItem('politico', document.getElementById("politico").value);
+
+    //localStorage.setItem(`pecAno`, document.getElementById('ano').value);
+    window.location.href = "./listasPec.html";
+}
 
 function preencherPecs(pec){
     var ul = document.getElementById('pecs');
@@ -37,10 +53,11 @@ function preencherPecs(pec){
 
 function setDados(pec){
     console.log(pec.id);
-    // localStorage.setItem('pecNum', pec.numero);
-    // localStorage.setItem('pecAno', pec.ano);
-    // localStorage.getItem('pecId', pec.id);
-    // window.location.href = './dadosPec.html';
+    localStorage.setItem('pecNum', pec.numero);
+    localStorage.setItem('pecAno', pec.ano);
+    localStorage.setItem('pecId', pec.id);
+    console.log(pec);
+    window.location.href = './dadosPec.html';
 }
 function getAutores(id) {
     $.ajax({
@@ -61,4 +78,20 @@ function getAutores(id) {
             document.getElementById('autores-' + id).innerHTML = result;
         }
     });
+}
+
+function showFiltros() {
+  $("#conteudo").hide();
+  $("#filter").show();
+  $('.card').hide();
+  $("#filter").addClass("fullHeight");
+  $(".card-content").hide();
+}
+
+function hideFiltros() {
+  $("#conteudo").show();
+  $("#filter").hide();
+  $('.card').show();
+  $("#filter").removeClass("fullHeight");
+  $(".card-content").show();
 }

@@ -32,7 +32,6 @@
             <nav>
               <div class="nav-wrapper cyan darken-1">
                 <a href="#" class="brand-logo">PECtômetro</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                   <li><a href="sass.html">Temas</a></li>
                   <li><a href="badges.html">Quem Somos</a></li>
@@ -66,6 +65,7 @@
               </div>
             </nav>
             <h3 class="titulo" style="text-align: center">Últimas PEC's</h3>
+
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
@@ -91,6 +91,10 @@
                 <span class="sr-only">Next</span>
               </a>
           </div>
+
+          <div id="myCarousel" class="carousel">
+          </div>
+
           <h1 style="margin: auto; margin: 30px 30px 0px 30px; width: auto;" class="center">Tarifômetro</h1>
           <div style="width: 100%; display: flex; padding-bottom: 20px;">
             <ul class="pagination" style="margin: auto; margin: 10px auto; width: auto;">
@@ -126,7 +130,7 @@
             </ul>
     </div>
     <div id='filter' style='display: none;background-color: white'>
-        <i class="material-icons right">close</i></span>
+        <i class="material-icons right" onclick="hideFiltros()">close</i></span>
         <textarea id="ano" class="materialize-textarea" placeholder="Ano"  onkeypress="keypress(event,this, 'ano')"></textarea>
         <textarea id="politico" class="materialize-textarea" placeholder="Politico"  onkeypress="keypress(event,this, 'politico')"></textarea>
         <a class="waves-effect waves-light btn" style="color: white !important; float: right; margin-top: 10px; margin-right: 10px;" onclick="openPec()">Buscar</a>

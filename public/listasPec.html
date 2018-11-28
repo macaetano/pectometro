@@ -28,6 +28,7 @@
 
     </head>
     <body>
+      <div id="conteudo">
       <nav>
         <div class="nav-wrapper cyan darken-1">
           <a href="index.html" class="brand-logo">PECtômetro</a>
@@ -51,7 +52,7 @@
           </ul>
         </div>
       </nav>
-      <nav class="nav-pesquisa mobile">
+      <nav class="nav-pesquisa mobile" style='height: 100%;width: 100%'>
         <div class="nav-wrapper">
           <div class="input-field white">
             <input id="search" type="search" onkeypress="keypress(event,this)" placeholder="Buscar PEC" required onclick="$('nav.mobile').addClass('expanded')">
@@ -60,14 +61,19 @@
           </div>
         </div>
         <div class="filtro-wrapper">
-            <div class="input-field">
-              <input id="ano" type="number" placeholder="Ano" style="padding-left: 1rem;" onkeypress="keypress(event,this)">
-            </div>
-            <a class="waves-effect waves-light btn" style="color: white !important; float: right;" onclick="openPec()">Buscar</a>
+            <a onclick='showFiltros()' style="margin-left: 10px">Mais filtros</a>
+            <a class="waves-effect waves-light btn" style="color: white !important; float: right; margin-top: 10px; margin-right: 10px;" onclick="openPec()">Buscar</a>
         </div>
       </nav>
       <ul id="pecs" class="collection with-header">
       </ul>
+    </div>
+      <div id='filter' style='display: none;background-color: white'>
+          <i class="material-icons right" onclick="hideFiltros()">close</i></span>
+          <textarea id="ano" class="materialize-textarea" placeholder="Ano"  onkeypress="keypress(event,this, 'ano')"></textarea>
+          <textarea id="politico" class="materialize-textarea" placeholder="Politico"  onkeypress="keypress(event,this, 'politico')"></textarea>
+          <a class="waves-effect waves-light btn" style="color: white !important; float: right; margin-top: 10px; margin-right: 10px;" onclick="openPec()">Buscar</a>
+      </div>
     
    </body>
   </html>
