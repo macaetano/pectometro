@@ -1,11 +1,15 @@
-function keypress(e, i, type = 'pecNum') {
+function keypress(e, i, version = 'mobile', type = 'pecNum') {
     if (e.key == `Enter`) {
-        openPec(type);
+        openPec(type, version);
     }
 }
 
-function openPec(type='pecNum') {
-    localStorage.setItem('pecNum', document.getElementById("search").value);
+function openPec(type='pecNum', version='mobile') {
+    if (version == 'mobile') {
+        localStorage.setItem('pecNum', document.getElementById("search").value);
+    } else {
+        localStorage.setItem('pecNum', document.getElementById("search-pc").value);
+    }
     localStorage.setItem('ano', document.getElementById("ano").value);
     localStorage.setItem('politico', document.getElementById("politico").value);
 
@@ -49,7 +53,7 @@ function getUltimasProposicoes(quant, cb) {
     $.ajax({
         "type": "GET",
         "crossDomain": true,
-        "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?itens=${quant}&siglaTipo=PEC&ordem=DESC&ordenarPor=id&ano=${(new Date()).getFullYear()}`,
+        "url": `https://dadosabertos.camara.leg.br/api/v2/proposicoes?itens=${quant}&siglaTipo=PEC&ordem=DESC&ordenarPor=id`,
         "success": function(response) {
             cb(response.dados);
         }
