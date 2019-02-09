@@ -22,14 +22,18 @@ $.ajax({
     }
 });
 
-function keypress(e, i, type = 'pecNum') {
+function keypress(e, i, type = 'pecNum', version = 'mobile') {
     if (e.key == `Enter`) {
-        openPec(type);
+        openPec(version, type);
     }
 }
 
-function openPec(type='pecNum') {
-    localStorage.setItem('pecNum', document.getElementById("search").value);
+function openPec(version='mobile', type='pecNum') {
+    if (version == 'mobile') {
+        localStorage.setItem('pecNum', document.getElementById("search").value);
+    } else {
+        localStorage.setItem('pecNum', document.getElementById("search-pc").value);
+    }
     localStorage.setItem('ano', document.getElementById("ano").value);
     localStorage.setItem('politico', document.getElementById("politico").value);
 
