@@ -42,7 +42,7 @@ function preencherPecs(pec){
     ul.innerHTML += `   
         <li class="collection-item">
             <div> <h3>PEC ${pec.numero}/${pec.ano}</h3>
-                <a>Autor(es): <span id="autores-${pec.id}"></span><a>
+                <a>Autor(es): <span id="autores-${pec.id}" style="line-height: 28px;"></span><a>
                 <a href="#" class="secondary-content"><i onclick='setDados(${JSON.stringify(pec)})' class="material-icons">send</i>
                 </a>
             </div>
