@@ -15,7 +15,7 @@ $.ajax({
         getMessages()
         document.getElementById('numPec').innerHTML = 'PEC ' + numero + ' / ' + (response.dados.ano ? response.dados.ano : 2018);
         document.getElementById('ementa').innerHTML += titleCase(response.dados.ementa + "<br/> " + response.dados.ementaDetalhada);
-        console.log(response.dados)
+        document.getElementById('constituicao').innerHTML += "<a href='"+response.dados.statusProposicao.url+"'>" + response.dados.statusProposicao.url + "</a>";
     }
 });
 
